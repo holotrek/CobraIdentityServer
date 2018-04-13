@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { LoginSuccessComponent } from './components/login-success/login-success.component';
 import * as Oidc from 'oidc-client';
+import { HomeComponent } from './components/home/home.component';
 
 const config = {
     authority: 'http://localhost:5000',
@@ -22,7 +23,8 @@ export const loginManager = new Oidc.UserManager(config);
     declarations: [
         AppComponent,
         LoginComponent,
-        LoginSuccessComponent
+        LoginSuccessComponent,
+        HomeComponent
     ],
     imports: [
         BrowserModule,
@@ -30,12 +32,12 @@ export const loginManager = new Oidc.UserManager(config);
         RouterModule.forRoot([
             {
                 path: '',
-                redirectTo: 'login',
+                redirectTo: 'home',
                 pathMatch: 'full'
             },
             {
-                path: 'login',
-                component: LoginComponent
+                path: 'home',
+                component: HomeComponent
             },
             {
                 path: 'login/success',

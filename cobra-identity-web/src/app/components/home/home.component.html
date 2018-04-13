@@ -1,0 +1,3 @@
+Logged in as: {{user}} <br />
+<button type="button" *ngIf="!user" (click)="login()">Log In</button>
+<button type="button" *ngIf="user" (click)="logout()">Log Out</button>

@@ -8,19 +8,15 @@ import { loginManager } from '../../app.module';
   styleUrls: ['./login-success.component.css']
 })
 export class LoginSuccessComponent implements OnInit {
-  user: string;
+  loginDetails: string;
   constructor(
     private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    loginManager.getUser().then(user => {
-      alert(user);
-        if (user) {
-          this.user = user.profile.name;
-        }
-    }).catch(err => {
-        alert(err);
+
+    loginManager.signinRedirectCallback().then((user) => {
+      this.loginDetails = JSON.stringify(user, null, 4);
     });
   }
 
